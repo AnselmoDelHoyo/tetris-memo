@@ -13,3 +13,17 @@ canvas.width = BLOCK_SIZE * BOARD_WIDTH
 canvas.height = BLOCK_SIZE * BOARD_HEIGHT
 
 context.scale(BLOCK_SIZE, BLOCK_SIZE)
+
+// Game loop
+
+function update () {
+  draw()
+  window.requestAnimationFrame(update)
+}
+
+function draw () {
+  context.fillStyle = '#000'
+  context.fillRect(0, 0, canvas.width, canvas.height)
+}
+
+update()
