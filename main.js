@@ -50,7 +50,7 @@ const board = [
 ]
 
 const piece = {
-  position: { x: 8, y: 26 },
+  position: { x: 5, y: 5 },
   shape: [
     [1, 1],
     [1, 1]
@@ -86,3 +86,29 @@ function draw () {
 }
 
 update()
+
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowDown') {
+    piece.position.y++
+    if (checkCollision()) piece.position.y--
+  }
+  if (e.key === 'ArrowRight') {
+    piece.position.x++
+    if (checkCollision()) piece.position.x--
+  }
+  if (e.key === 'ArrowLeft') {
+    piece.position.x--
+    if (checkCollision()) piece.position.x++
+  }
+})
+
+function checkCollision () {
+  return piece.shape.find((row, y) => {
+    return row.find((value, x) => {
+      return (
+        value !== 0 &&
+        board[y + piece.position.y]?.[x + piece.position.x] !== 0
+      )
+    })
+  })
+}
