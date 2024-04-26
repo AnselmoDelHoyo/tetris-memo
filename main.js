@@ -90,7 +90,11 @@ update()
 window.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowDown') {
     piece.position.y++
-    if (checkCollision()) piece.position.y--
+    if (checkCollision()) {
+      piece.position.y--
+      solidifyPiece()
+      removeRows()
+    }
   }
   if (e.key === 'ArrowRight') {
     piece.position.x++
@@ -110,5 +114,34 @@ function checkCollision () {
         board[y + piece.position.y]?.[x + piece.position.x] !== 0
       )
     })
+  })
+}
+
+function solidifyPiece () {
+  piece.shape.forEach((row, y) => {
+    row.forEach((value, x) => {
+      if (value === 1) {
+        board[y + piece.position.y][x + piece.position.x] = 1
+      }
+    })
+  })
+
+  piece.position.x = 0
+  piece.position.y = 0
+}
+
+function removeRows () {
+  const rowsToRemove = []
+
+  board.forEach((row, y) => {
+    if (row.every(value => value === 1)) {
+      rowsToRemove.push(y)
+    }
+  })
+
+  rowsToRemove.forEach(y => {
+    board.splice(y, 1)
+    const newRow = Array(BOARD_WIDTH).fill(0)
+    board.unshift(newRow)
   })
 }
