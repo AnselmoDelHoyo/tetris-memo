@@ -49,12 +49,32 @@ const board = [
   [1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1]
 ]
 
-const piece = {
-  position: { x: 5, y: 5 },
-  shape: [
+const PIECES = [
+  [
     [1, 1],
     [1, 1]
+  ], [
+    [0, 1, 0],
+    [1, 1, 1]
+  ], [
+    [1, 1, 0],
+    [0, 1, 1]
+  ], [
+    [1, 0],
+    [1, 0],
+    [1, 1]
+  ], [
+    [1, 1, 1, 1]
   ]
+]
+
+const piece = {
+  position: { x: 5, y: 0 },
+  shape: getRandomShape()
+}
+
+function getRandomShape () {
+  return PIECES[Math.floor(Math.random() * PIECES.length)]
 }
 
 // Game loop
@@ -99,8 +119,10 @@ function draw () {
 
   piece.shape.forEach((row, y) => {
     row.forEach((value, x) => {
-      context.fillStyle = 'red'
-      context.fillRect(x + piece.position.x, y + piece.position.y, 1, 1)
+      if (value) {
+        context.fillStyle = 'red'
+        context.fillRect(x + piece.position.x, y + piece.position.y, 1, 1)
+      }
     })
   })
 }
@@ -146,8 +168,18 @@ function solidifyPiece () {
     })
   })
 
-  piece.position.x = 0
+  // Reset position
+  piece.position.x = Math.floor(BOARD_WIDTH / 2 - 2)
   piece.position.y = 0
+
+  // Get random shape
+  piece.shape = getRandomShape()
+
+  // Game Over
+  if (checkCollision()) {
+    window.alert('Game Over!! Sorry')
+    board.forEach((row) => row.fill(0))
+  }
 }
 
 function removeRows () {
