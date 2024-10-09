@@ -69,12 +69,6 @@ const PIECES = [
   [[1, 1, 1, 1]],
 ];
 
-const piece = {
-  position: { x: 5, y: 0 },
-  shape: getRandomShape(),
-  color: getRandomColor()
-};
-
 function getRandomShape() {
   return PIECES[Math.floor(Math.random() * PIECES.length)];
 }
@@ -83,6 +77,11 @@ function getRandomColor() {
   return COLORS[Math.floor(Math.random() * COLORS.length)];
 }
 
+const piece = {
+  position: { x: 5, y: 0 },
+  shape: getRandomShape(),
+  color: getRandomColor()
+};
 // Game loop
 // Auto drop
 
@@ -117,7 +116,7 @@ function draw() {
   board.forEach((row, y) => {
     row.forEach((value, x) => {
       if (value === 1) {
-        context.fillStyle = "yellow";
+        context.fillStyle = "#555";
         context.fillRect(x, y, 1, 1);
       }
     });
