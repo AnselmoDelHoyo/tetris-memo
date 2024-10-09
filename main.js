@@ -87,6 +87,7 @@ const piece = {
 
 let dropCounter = 0;
 let lastTime = 0;
+let dropSpeed = 1000;
 
 function update(time = 0) {
   const deltaTime = time - lastTime;
@@ -94,7 +95,7 @@ function update(time = 0) {
 
   dropCounter += deltaTime;
 
-  if (dropCounter > 1000) {
+  if (dropCounter > dropSpeed - (Number(level.textContent) * 100)) {
     piece.position.y++;
     dropCounter = 0;
 
@@ -104,6 +105,8 @@ function update(time = 0) {
       removeRows();
     }
   }
+
+  level.textContent = Math.floor((Number(score.textContent) / 100));
 
   draw();
   window.requestAnimationFrame(update);
@@ -215,9 +218,12 @@ function removeRows() {
     }
   });
 
+  for (let i = rowsToRemove.length; i !== 0; i--) {
+    let currentScore = Number(score.textContent);
+    score.textContent = currentScore + (i * 10);
+  }
+
   rowsToRemove.forEach((y) => {
-    score.textContent = parseInt(score.textContent) + 10;
-    if (score > 100) parseInt(level.textContent)++;
     board.splice(y, 1);
     const newRow = Array(BOARD_WIDTH).fill(0);
     board.unshift(newRow);
