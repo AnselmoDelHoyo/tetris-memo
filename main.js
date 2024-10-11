@@ -14,13 +14,23 @@ canvas.height = BLOCK_SIZE * BOARD_HEIGHT;
 
 context.scale(BLOCK_SIZE, BLOCK_SIZE);
 
+const gameOverModal = document.getElementById("game-over");
+
 // Data
 
 const score = document.getElementById("score");
 const level = document.getElementById("level");
+const restart = document.getElementById("restart");
+
+// Reset game
+
+restart.addEventListener("click", () => {
+  location.reload();
+})
 
 score.textContent = 0;
 level.textContent = 1;
+let gameOver = false;
 
 // Board
 
@@ -108,7 +118,7 @@ function update(time = 0) {
 
   level.textContent = Math.floor((Number(score.textContent) / 100));
 
-  draw();
+  if (!gameOver) draw();
   window.requestAnimationFrame(update);
 }
 
@@ -204,7 +214,8 @@ function solidifyPiece() {
 
   // Game Over
   if (checkCollision()) {
-    window.alert("Game Over!! Sorry");
+    gameOverModal.style.visibility = "visible";
+    gameOver = true;
     board.forEach((row) => row.fill(0));
   }
 }

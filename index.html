@@ -6,11 +6,17 @@
     <title>Tetris Memo</title>
   </head>
   <body>
-    <canvas id="tetris"></canvas>
-    <div>
-      <div>Score: <span id="score"></span></div>
-      <div>Level: <span id="level"></span></div>
-    </div>
+    <main id="game">
+      <canvas id="tetris"></canvas>
+      <div class="data">
+        <div>Score: <span id="score"></span></div>
+        <div>Level: <span id="level"></span></div>
+      </div>
+    </main>
+    <section id="game-over">
+      <h3 class="title">Game Over</h3>
+      <button id="restart">Restart</button>
+    </section>
     <script type="module" src="/main.js"></script>
   </body>
 </html>
