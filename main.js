@@ -22,7 +22,7 @@ const gameOverModal = document.getElementById("game-over");
 const score = document.getElementById("score");
 const level = document.getElementById("level");
 const restart = document.getElementById("restart");
-let music = new Audio("./resources/sound.mp3");
+let music = new Audio("./sound.mp3");
 music.volume = 0.2;
 music.loop = true;
 
