@@ -10,10 +10,5 @@
   },
   "devDependencies": {
     "vite": "^5.2.0"
-  },
-  "eslintConfig": {
-    "extends": [
-      "standard"
-    ]
   }
 }
