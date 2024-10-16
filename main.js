@@ -119,7 +119,7 @@ function update(time = 0) {
 
   dropCounter += deltaTime;
 
-  if (dropCounter > dropSpeed - (Number(level.textContent) * 100)) {
+  if ((dropCounter > dropSpeed - (Number(level.textContent) * 100)) && gamePlay) {
     piece.position.y++;
     dropCounter = 0;
 
@@ -133,6 +133,7 @@ function update(time = 0) {
   level.textContent = Math.floor((Number(score.textContent) / 100));
 
   if (!gameOver && gamePlay) draw();
+
   window.requestAnimationFrame(update);
 }
 
