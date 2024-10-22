@@ -94,13 +94,14 @@ button:hover {
 }
 
 #phone-controller {
-  width: 140px;
-  height: 140px;
+  width: 150px;
+  height: 150px;
   position: absolute;
-  bottom: 100px;
-  right: 100px;
+  bottom: 50px;
+  right: 50px;
   color: white;
-  border: 1px solid white;
+  border-radius: 10px;
+  border: 2px solid white;
   transform: rotate(100);
 
   #Outline {
@@ -111,6 +112,10 @@ button:hover {
   .button {
     display: inline-block;
     position: absolute;
+  }
+  .button:active {
+    background-color: rgba(255, 255, 255, 0.201);
+    border-radius: 10px;
   }
 
   .right {

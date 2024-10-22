@@ -164,6 +164,47 @@ function draw() {
 
 update();
 
+let right = document.querySelector(".right");
+let up = document.querySelector(".up");
+let left = document.querySelector(".left");
+let down = document.querySelector(".down");
+
+left.addEventListener("click", () => {
+  piece.position.x++;
+    if (checkCollision()) piece.position.x--;
+})
+up.addEventListener("click", () => {
+  const rotated = [];
+
+    for (let i = 0; i < piece.shape[0].length; i++) {
+      const row = [];
+
+      for (let j = piece.shape.length - 1; j >= 0; j--) {
+        row.push(piece.shape[j][i]);
+      }
+
+      rotated.push(row);
+    }
+
+    const previousShape = piece.shape;
+    piece.shape = rotated;
+    if (checkCollision()) {
+      piece.shape = previousShape;
+    }
+})
+right.addEventListener("click", () => {
+  piece.position.x--;
+    if (checkCollision()) piece.position.x++;
+})
+down.addEventListener("click", () => {
+  piece.position.y++;
+    if (checkCollision()) {
+      piece.position.y--;
+      solidifyPiece();
+      removeRows();
+    }
+})
+
 window.addEventListener("keydown", (e) => {
   if (e.key === "ArrowDown") {
     piece.position.y++;
