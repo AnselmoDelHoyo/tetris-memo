@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/website/css/uicons-outline-rounded.css" rel="stylesheet">
     <title>Tetris Memo</title>
   </head>
   <body>
@@ -15,9 +16,52 @@
       </div>
       <div class="data">
         <div>Score: <span id="score"></span></div>
+        <div>Best Score: <span id="best-score"></span></div>
         <div>Level: <span id="level"></span></div>
-      </div>
+        
     </main>
+    <div id="phone-controller">
+          <div class="right button">
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              id="Outline" viewBox="0 0 24 24" 
+              width="512" 
+              height="512"
+              transform="rotate(180)">
+              <path d="M20.494,7.968l-9.54-7A5,5,0,0,0,3,5V19a5,5,0,0,0,7.957,4.031l9.54-7a5,5,0,0,0,0-8.064Zm-1.184,6.45-9.54,7A3,3,0,0,1,5,19V5A2.948,2.948,0,0,1,6.641,2.328,3.018,3.018,0,0,1,8.006,2a2.97,2.97,0,0,1,1.764.589l9.54,7a3,3,0,0,1,0,4.836Z"/>
+            </svg>
+          </div>
+          <div class="up button">
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              id="Outline" viewBox="0 0 24 24" 
+              width="512" 
+              height="512"
+              transform="rotate(-90)">
+              <path d="M20.494,7.968l-9.54-7A5,5,0,0,0,3,5V19a5,5,0,0,0,7.957,4.031l9.54-7a5,5,0,0,0,0-8.064Zm-1.184,6.45-9.54,7A3,3,0,0,1,5,19V5A2.948,2.948,0,0,1,6.641,2.328,3.018,3.018,0,0,1,8.006,2a2.97,2.97,0,0,1,1.764.589l9.54,7a3,3,0,0,1,0,4.836Z"/>
+            </svg>
+          </div>
+          <div class="left button">
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              id="Outline" viewBox="0 0 24 24" 
+              width="512" 
+              height="512"
+              transform="rotate(0)">
+              <path d="M20.494,7.968l-9.54-7A5,5,0,0,0,3,5V19a5,5,0,0,0,7.957,4.031l9.54-7a5,5,0,0,0,0-8.064Zm-1.184,6.45-9.54,7A3,3,0,0,1,5,19V5A2.948,2.948,0,0,1,6.641,2.328,3.018,3.018,0,0,1,8.006,2a2.97,2.97,0,0,1,1.764.589l9.54,7a3,3,0,0,1,0,4.836Z"/>
+            </svg>
+          </div>
+          <div class="down button">
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              id="Outline" viewBox="0 0 24 24" 
+              width="512" 
+              height="512"
+              transform="rotate(90)">
+              <path d="M20.494,7.968l-9.54-7A5,5,0,0,0,3,5V19a5,5,0,0,0,7.957,4.031l9.54-7a5,5,0,0,0,0-8.064Zm-1.184,6.45-9.54,7A3,3,0,0,1,5,19V5A2.948,2.948,0,0,1,6.641,2.328,3.018,3.018,0,0,1,8.006,2a2.97,2.97,0,0,1,1.764.589l9.54,7a3,3,0,0,1,0,4.836Z"/>
+            </svg>
+          </div>
+        </div>
     <section id="game-over">
       <h3 class="title">Game Over</h3>
       <button id="restart">Restart</button>

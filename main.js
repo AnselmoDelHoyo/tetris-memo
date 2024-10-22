@@ -20,6 +20,7 @@ const gameOverModal = document.getElementById("game-over");
 // Data
 
 const score = document.getElementById("score");
+const bestScore = document.getElementById("best-score");
 const level = document.getElementById("level");
 const restart = document.getElementById("restart");
 let music = new Audio("./sound.mp3");
@@ -34,6 +35,7 @@ restart.addEventListener("click", () => {
 
 score.textContent = 0;
 level.textContent = 1;
+bestScore.textContent = localStorage.getItem("high-score") || 0;
 let gameOver = false;
 let gamePlay = false;
 
@@ -232,6 +234,12 @@ function solidifyPiece() {
     gameOverModal.style.visibility = "visible";
     gameOver = true;
     music.pause();
+    let highScore = localStorage.getItem("high-score");
+    if (Number(score.textContent) > highScore) {
+      localStorage.setItem("high-score", Number(score.textContent));
+    } else {
+      localStorage.setItem("high-score", Number(score.textContent));
+    }
     board.forEach((row) => row.fill(0));
   }
 }
@@ -245,11 +253,9 @@ function removeRows() {
     }
   });
 
-  for (let i = rowsToRemove.length; i !== 0; i--) {
-    let currentScore = Number(score.textContent);
-    score.textContent = currentScore + (i * 10);
-  }
-
+  let currentScore = Number(score.textContent);
+  score.textContent = currentScore + (rowsToRemove.length * 10);
+  
   rowsToRemove.forEach((y) => {
     board.splice(y, 1);
     const newRow = Array(BOARD_WIDTH).fill(0);

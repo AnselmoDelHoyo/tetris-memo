@@ -92,3 +92,39 @@ button {
 button:hover {
   opacity: .5;
 }
+
+#phone-controller {
+  width: 140px;
+  height: 140px;
+  position: absolute;
+  bottom: 100px;
+  right: 100px;
+  color: white;
+  border: 1px solid white;
+  transform: rotate(100);
+
+  #Outline {
+    height: 50px;
+    width: 50px;
+  }
+
+  .button {
+    display: inline-block;
+    position: absolute;
+  }
+
+  .right {
+    top: 30%;
+  }
+  .up {
+    right: 32%;
+  }
+  .left {
+    top: 30%;
+    right: 0;
+  }
+  .down {
+    right: 32%;
+    bottom: 0;
+  }
+}
